@@ -16,7 +16,7 @@
     <title>To Do</title>
     <style>
         html {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Kode Mono', sans-serif;
         }
 
         h1 {
@@ -76,6 +76,7 @@
             display: flex;
             align-items: stretch;
             border: 1px solid ghostwhite;
+            position: relative;
         }
 
         #enterTodo input {
@@ -89,6 +90,10 @@
         }
 
         #enterTodo button {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
             background: ghostwhite;
             border: none;
             outline: none;
@@ -99,7 +104,7 @@
         }
 
         #enterTodo button:hover {
-            background-color: transparent;
+            background-color: #0f172a;
             color: ghostwhite;
         }
 
@@ -142,7 +147,7 @@
         <section id="enterTodo">
             <form>
                 <input type="text" id="textInput" placeholder="What do you have to do?" />
-                <button>ADD</button>
+                <button id="add">ADD</button>
             </form>
 
         </section>
@@ -152,16 +157,39 @@
         </section>
     </main>
     <footer>
-        End of page
+
     </footer>
 </body>
 <script>
-    let todos = ['Go home']
-
-    function addTodo() { }
-
-
+    let todos = []
     const todosList = document.getElementById('todo')
+    const todoInput = document.getElementById('textInput')
+    const inputBtn = document.getElementById('add')
+    function addTodo(e) {
+        e.preventDefault()
+        let textVal = todoInput.value
+        todos.push(textVal)
+        todosList.innerHTML = ''
+        renderToDo()
+        todoInput.value = ''
+    }
+    inputBtn.addEventListener('click', addTodo)
+
+    function removeToDo(index) {
+        todos = todos.filter((todo, i) => {
+            return i === index ? false : true
+        })
+        todosList.innerHTML = ''
+        renderToDo()
+    }
+    function editTodo(index) {
+        const currElementTxt = document.querySelector(`#todo div:nth-child(${index + 1}) p`).innerText
+        const splicedText = currElementTxt.slice(2)
+        console.log(currElementTxt)
+        console.log(splicedText)
+
+    }
+
     function renderToDo() {
         todos.forEach((todos, i) => {
             let currentHTML = todosList.innerHTML
@@ -169,8 +197,8 @@
                 (`<div class="todoitem"> 
                     <p>${i + 1}. ${todos}</p>
                     <div class="options">
-                        <i class="fa-solid fa-trash"></i>
-                        <i class="fa-solid fa-pen-to-square"></i>
+                        <i onclick="removeToDo(${i})" class="fa-solid fa-trash"></i>
+                        <i onclick="editTodo(${i})" class="fa-solid fa-pen-to-square"></i>
                     </div>
                 </div>`)
             let ammendHTML = currentHTML + newHTML
@@ -179,9 +207,6 @@
         })
     }
     renderToDo()
-
-
-
 </script>
 
 </html>

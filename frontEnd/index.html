@@ -108,6 +108,27 @@
             flex-direction: column;
             gap: 4px;
         }
+
+        .todoitem {
+            display: flex;
+            align-items: center;
+        }
+
+        .todoitem p {
+            flex: 1;
+
+        }
+
+        .options {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .options i:hover {
+            color: gray;
+
+        }
     </style>
 </head>
 
@@ -134,21 +155,19 @@
     </footer>
 </body>
 <script>
-    let todos = ['Go to SuperMarket']
+    let todos = ['Go home']
     const todosList = document.getElementById('todo')
     function renderToDo() {
         todos.forEach((todos, i) => {
             let currentHTML = todosList.innerHTML
             let newHTML =
                 (`<div class="todoitem"> 
-                    <p>${i + 1}. ${todo}</p>
-                    <div class="actions">
+                    <p>${i + 1}. ${todos}</p>
+                    <div class="options">
                         <i class="fa-solid fa-trash"></i>
                         <i class="fa-solid fa-pen-to-square"></i>
                     </div>
-
-                </div>`
-                )
+                </div>`)
             let ammendHTML = currentHTML + newHTML
             todosList.innerHTML = ammendHTML
 

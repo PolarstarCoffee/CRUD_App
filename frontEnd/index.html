@@ -123,6 +123,7 @@
             display: flex;
             align-items: center;
             gap: 24px;
+            cursor: pointer;
         }
 
         .options i:hover {
@@ -156,6 +157,10 @@
 </body>
 <script>
     let todos = ['Go home']
+
+    function addTodo() { }
+
+
     const todosList = document.getElementById('todo')
     function renderToDo() {
         todos.forEach((todos, i) => {

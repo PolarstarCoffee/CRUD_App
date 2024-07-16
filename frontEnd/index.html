@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -160,6 +161,8 @@
     <footer>
     </footer>
 </body>
+
+</html>
 <script>
     let todos = []
     const todosList = document.getElementById('todo')
@@ -191,6 +194,7 @@
         console.log(currElementTxt)
         console.log(splicedText)
         removeToDo(index)
+        showtoDoinput()
         todoInput.value = splicedText
 
     }
@@ -206,12 +210,12 @@
             let currentHTML = todosList.innerHTML
             let newHTML =
                 (`<div class="todoitem"> 
-                    <p>${i + 1}. ${todos}</p>
-                    <div class="options">
-                        <i onclick="removeToDo(${i})" class="fa-solid fa-trash"></i>
-                        <i onclick="editTodo(${i})" class="fa-solid fa-pen-to-square"></i>
-                    </div>
-                </div>`)
+                <p>${i + 1}. ${todos}</p>
+                <div class="options">
+                    <i onclick="removeToDo(${i})" class="fa-solid fa-trash"></i>
+                    <i onclick="editTodo(${i})" class="fa-solid fa-pen-to-square"></i>
+                </div>
+            </div>`)
             let ammendHTML = currentHTML + newHTML
             todosList.innerHTML = ammendHTML
 
@@ -219,5 +223,3 @@
     }
     renderToDo()
 </script>
-
-</html>

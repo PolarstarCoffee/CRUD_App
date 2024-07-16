@@ -71,6 +71,21 @@
         .plusIcon:hover {
             color: cyan;
         }
+
+        #enterTodo form {
+            display: flex;
+            align-items: stretch;
+        }
+
+        #enterTodo input {
+            background: transparent;
+            outline: none;
+            padding: 4px 8px;
+            color: green;
+            flex: 1;
+            border: 1px solid ghostwhite;
+
+        }
     </style>
 </head>
 
@@ -81,10 +96,26 @@
     </header>
     <main>
         Main
+        <section id="enterTodo">
+            <form>
+                <input type="text" id="textInput" />
+                <button>ADD</button>
+            </form>
+            Add To-Do
+        </section>
+        <section id="todo">
+            To-Do's
+
+        </section>
     </main>
     <footer>
-        footer
+        End of page
     </footer>
 </body>
+<script>
+
+
+
+</script>
 
 </html>

@@ -140,7 +140,7 @@
 
 <body>
     <header>
-        <h1> To Do </h1>
+        <h1> To Do Tasks </h1>
         <i class="fa-solid fa-plus plusIcon"></i>
     </header>
     <main>
@@ -184,9 +184,11 @@
     }
     function editTodo(index) {
         const currElementTxt = document.querySelector(`#todo div:nth-child(${index + 1}) p`).innerText
-        const splicedText = currElementTxt.slice(2)
+        const splicedText = currElementTxt.slice(3)
         console.log(currElementTxt)
         console.log(splicedText)
+        removeToDo(index)
+        todoInput.value = splicedText
 
     }
 

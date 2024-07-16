@@ -72,6 +72,10 @@
             color: grey;
         }
 
+        #enterTodo {
+            display: none;
+        }
+
         #enterTodo form {
             display: flex;
             align-items: stretch;
@@ -141,7 +145,7 @@
 <body>
     <header>
         <h1> To Do Tasks </h1>
-        <i class="fa-solid fa-plus plusIcon"></i>
+        <i id="enterIcon" class="fa-solid fa-plus plusIcon"></i>
     </header>
     <main>
         <section id="enterTodo">
@@ -149,15 +153,11 @@
                 <input type="text" id="textInput" placeholder="What do you have to do?" />
                 <button id="add">ADD</button>
             </form>
-
         </section>
         <section id="todo">
-
-
         </section>
     </main>
     <footer>
-
     </footer>
 </body>
 <script>
@@ -165,6 +165,8 @@
     const todosList = document.getElementById('todo')
     const todoInput = document.getElementById('textInput')
     const inputBtn = document.getElementById('add')
+    const showEnter = document.getElementById('enterIcon')
+    const enterPrompt = document.getElementById('enterTodo')
     function addTodo(e) {
         e.preventDefault()
         let textVal = todoInput.value
@@ -172,6 +174,7 @@
         todosList.innerHTML = ''
         renderToDo()
         todoInput.value = ''
+        enterPrompt.style.display = 'none'
     }
     inputBtn.addEventListener('click', addTodo)
 
@@ -191,6 +194,12 @@
         todoInput.value = splicedText
 
     }
+    function showtoDoinput() {
+
+        enterPrompt.style.display = 'block'
+
+    }
+    showEnter.addEventListener('click', showtoDoinput)
 
     function renderToDo() {
         todos.forEach((todos, i) => {
